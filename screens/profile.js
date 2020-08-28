@@ -3,13 +3,13 @@ import {View,Text} from 'react-native';
 
 
 
-const Detail = () => {
+const Profile = () => {
     return (
         <View>
-            <Text>Detail Page</Text>
+            <Text>Profile Page</Text>
         </View>
     );
 }
 
 
-export default Detail;
+export default Profile;

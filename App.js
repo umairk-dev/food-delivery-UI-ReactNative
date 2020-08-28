@@ -1,56 +1,68 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import {
-  StyleSheet
+  StyleSheet,View,Text,Button
 } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import Intro from './screens/intro';
-import Home from './screens/home';
-import Detail from './screens/detail';
+import MainView from './screens/main';
+import Cart from './screens/cart';
+import Profile from './screens/profile';
+
+const RootStack = createStackNavigator();
 
 
-const Stack = createStackNavigator();
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-function HomeStack() {
+function ModalScreen({ navigation }) {
   return (
-    <Tab.Navigator>
-    </Tab.Navigator>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text style={{ fontSize: 30 }}>This is a modal!</Text>
+      <Button onPress={() => navigation.goBack()} title="Dismiss" />
+    </View>
   );
 }
+
+
 
 const App = () =>{
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Welcome" component={Intro} 
+      <RootStack.Navigator initialRouteName="Welcome">
+        <RootStack.Screen name="Welcome" component={Intro} 
           options={{
             headerTransparent:true,  
             title:"",
-              headerTintColor: '#fff',  headerStyle:{ backgroundColor:'#FC9D14'}
-          }}
-            
+            headerTintColor: '#fff',  headerStyle:{ backgroundColor:'#FC9D14'}
+          }}            
         />
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Detail" component={Detail} />
-      </Stack.Navigator>
+        <RootStack.Screen name="Main" component={MainView} 
+          options={{
+            headerTransparent:true,  
+            title:"",
+            headerLeft:()=>{
+            }
+          }}     
+        />
+         <RootStack.Screen name="Cart" component={Cart} 
+          options={{
+            headerTransparent:true,  
+            title:"",
+            headerLeft:()=>{
+            }
+          }}     
+        />
+        <RootStack.Screen name="MyModal" component={ModalScreen} />
+        <RootStack.Screen name="Profile" component={Profile} />
+
+      </RootStack.Navigator>
     </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  
-});
 
 export default App;

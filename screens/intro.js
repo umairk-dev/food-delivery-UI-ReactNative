@@ -4,7 +4,15 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
 //Icons made by <a href="https://www.flaticon.com/authors/eucalyp" title="Eucalyp">Eucalyp</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
 
-const Intro = () => {
+
+
+const Intro = ({navigation}) => {
+
+    const navHomeView = () => {
+        return(
+            navigation.navigate('Main')
+        );
+    }
     return (
         <View style={styles.container}>
             <View style={styles.topContainer}>
@@ -20,7 +28,7 @@ const Intro = () => {
             <View style={styles.bottomContainer}>
                 <Text style={styles.title}>A new destination for foodie</Text>
                 <Text style={styles.subtitle}>Pull up a chair. Take a taste. Come join us. Life is so endlessly delicious</Text>
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress={() => {navHomeView()}}>
                     <Icon color="#000" name="chevron-right" size={25} />
                 </TouchableOpacity>
             </View>
@@ -39,11 +47,11 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
         width:Dimensions.get('window').width,
         height: Dimensions.get('window').width / 1.7,
-        backgroundColor:'#FFF'
+        backgroundColor:'#E6E6E6'
     },
     bottomContainer : {
         flex:1,
-        backgroundColor:'#FFF',
+        backgroundColor:'#E6E6E6',
         justifyContent:"space-between",
         alignItems:"center"
     },

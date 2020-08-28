@@ -3,13 +3,13 @@ import {View,Text} from 'react-native';
 
 
 
-const Detail = () => {
+const Cart = () => {
     return (
         <View>
-            <Text>Detail Page</Text>
+            <Text>Cart Page</Text>
         </View>
     );
 }
 
 
-export default Detail;
+export default Cart;
